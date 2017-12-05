@@ -5,12 +5,12 @@ import java.util.Date;
 
 
 /**
- * Represents VO for the Person.
+ * Represents VO for the UserAccount.
  * contains general information about user ( name, age, birthday )
  * and important object references like: metrics, etc.
  *
  */
-public class Person implements Serializable {
+public class UserAccount implements Serializable {
 
     private static final long serialVersionUID = 1578971944503780078L;
 
@@ -24,7 +24,6 @@ public class Person implements Serializable {
     private Date birthday;
 
     private Metrics metrics;
-
 
 
 
