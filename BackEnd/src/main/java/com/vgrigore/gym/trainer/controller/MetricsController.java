@@ -1,8 +1,8 @@
 package com.vgrigore.gym.trainer.controller;
 
 import com.vgrigore.gym.trainer.model.Metrics;
-import com.vgrigore.gym.trainer.service.UserAccountService;
-import com.vgrigore.gym.trainer.service.UserMetricsService;
+import com.vgrigore.gym.trainer.service.UserAccountServiceImpl;
+import com.vgrigore.gym.trainer.service.UserMetricsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +25,14 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RequestMapping("/metrics/{userId}")
 public class MetricsController {
 
-    private final UserMetricsService metricsService;
+    private final UserMetricsServiceImpl metricsService;
 
-    private final UserAccountService accountService;
+    private final UserAccountServiceImpl accountService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MetricsController.class);
 
     @Autowired
-    public MetricsController(UserMetricsService metricsService, UserAccountService accountService) {
+    public MetricsController(UserMetricsServiceImpl metricsService, UserAccountServiceImpl accountService) {
         this.metricsService = metricsService;
         this.accountService = accountService;
     }
@@ -77,11 +77,11 @@ public class MetricsController {
     }
 
 
-    public UserMetricsService getMetricsService() {
+    public UserMetricsServiceImpl getMetricsService() {
         return this.metricsService;
     }
 
-    public UserAccountService getAccountService() {
+    public UserAccountServiceImpl getAccountService() {
         return accountService;
     }
 }

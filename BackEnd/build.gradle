@@ -1,6 +1,7 @@
 group 'Gym'
 version '1.0-SNAPSHOT'
 
+
 apply plugin: 'java'
 apply plugin: 'war'
 
@@ -10,9 +11,21 @@ repositories {
     mavenCentral()
 }
 
+ext{
+    springBootVersion = '1.5.9.RELEASE'
+    springVersion = '4.3.13.RELEASE'
+}
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.0.2.RELEASE'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    testCompile("junit:junit:4.12")
+
+    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
+        exclude module: "spring-boot-starter-tomcat"
+        exclude group: 'org.apache.tomcat'
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
+
+    compile("org.slf4j:slf4j-api:1.7.25")
+    compile("log4j:log4j:1.2.17")
 }

@@ -4,33 +4,38 @@ import com.vgrigore.gym.trainer.model.UserAccount;
 import com.vgrigore.gym.trainer.service.UserAccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
- * Controller used on startpage of the application
- * Presents entry data to the customer
- * With action points as "Tiles".
+ * Controlled handles registration of new customers
  *
  */
 @RestController
-@RequestMapping("/start")
-public class StartAppController {
+@RequestMapping("/signIn")
+public class RegistrationController {
 
     private UserAccountServiceImpl accountService;
 
     @Autowired
-    public StartAppController(UserAccountServiceImpl accountService) {
+    public RegistrationController(UserAccountServiceImpl accountService) {
         this.accountService = accountService;
     }
 
-
     @RequestMapping(method = GET)
-    public UserAccount getStartPage() {
-        return new UserAccount();
+    public UserAccount startSignIn() {
+        // return simple json presents UserAccount
+        return null;
     }
+
+    @RequestMapping(method = POST)
+    public boolean handleSignIn() {
+//        accountService.createUser();
+        return false;
+    }
+
 
     public UserAccountServiceImpl getAccountService() {
         return accountService;
