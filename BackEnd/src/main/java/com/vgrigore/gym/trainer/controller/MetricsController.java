@@ -27,14 +27,12 @@ public class MetricsController {
 
     private final UserMetricsServiceImpl metricsService;
 
-    private final UserAccountServiceImpl accountService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MetricsController.class);
 
     @Autowired
     public MetricsController(UserMetricsServiceImpl metricsService, UserAccountServiceImpl accountService) {
         this.metricsService = metricsService;
-        this.accountService = accountService;
     }
 
     /**
@@ -69,7 +67,4 @@ public class MetricsController {
         return this.metricsService;
     }
 
-    public UserAccountServiceImpl getAccountService() {
-        return accountService;
-    }
 }
