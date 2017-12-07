@@ -25,6 +25,8 @@ public class UserAccount implements Serializable {
 
     private Metrics metrics;
 
+    private UserCredentials credentials;
+
 
 
 
@@ -66,5 +68,13 @@ public class UserAccount implements Serializable {
 
     public void setMetrics(Metrics metrics) {
         this.metrics = metrics;
+    }
+
+    public UserCredentials getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(UserCredentials credentials) {
+        this.credentials = credentials;
     }
 }

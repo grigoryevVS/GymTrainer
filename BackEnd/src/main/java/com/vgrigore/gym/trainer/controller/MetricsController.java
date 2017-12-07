@@ -45,7 +45,6 @@ public class MetricsController {
      */
     @RequestMapping(method = GET)
     public Metrics getUserMetrics(@PathVariable long userId) {
-        validateUser(userId);
         Metrics metrics = metricsService.getMetrics(userId);
         LOGGER.debug("Metrics for the user: {0} is: {1}", userId, metrics);
         return metrics;
@@ -60,20 +59,9 @@ public class MetricsController {
      */
     @RequestMapping(method = POST, value = "/create")
     public ResponseEntity<?> createNewMetrics(@PathVariable long userId, @RequestBody Metrics metrics) {
-        validateUser(userId);
         boolean created = metricsService.createMetrics(userId, metrics);
-        // handle the returned value and set it into responseEntity
+        LOGGER.info("Metrics for userId: {0} created: {1}", userId, created);
         return ResponseEntity.noContent().build();
-    }
-
-    /**
-     * Validate if user founded by passed userId
-     *
-     * @param userId - userId
-     */
-    private void validateUser(long userId) {
-        // ??? orElseThrow
-        accountService.findUserById(userId).orElseThrow(() -> new RuntimeException("Account not found"));
     }
 
 

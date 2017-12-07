@@ -1,7 +1,9 @@
 package com.vgrigore.gym.trainer.service;
 
 import com.vgrigore.gym.trainer.model.UserAccount;
+import com.vgrigore.gym.trainer.model.UserCredentials;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 /**
@@ -15,8 +17,15 @@ public interface UserAccountService {
      * Find user by passed userId
      *
      * @param userId - userId
-     * @return - Optional which contain UserAccount VO
+     * @return - UserAccount VO
      */
-    Optional<UserAccount> findUserById(long userId);
+    UserAccount findUserById(long userId);
 
+    /**
+     * Find user account by passed login/password data
+     *
+     * @param credentials - auth credentials for user
+     * @return - Optional<UserAccount> - with account or empty
+     */
+    Optional<UserAccount> findUserByCredentials(UserCredentials credentials);
 }
