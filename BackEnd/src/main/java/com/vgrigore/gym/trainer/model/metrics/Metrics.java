@@ -1,6 +1,7 @@
-package com.vgrigore.gym.trainer.model;
+package com.vgrigore.gym.trainer.model.metrics;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -12,6 +13,12 @@ public class Metrics implements Serializable {
 
     private static final long serialVersionUID = -8475811191487127355L;
 
+
+    private Date date;
+
+    private long id;
+
+    private long userId;
 
     private double weight;
 
@@ -34,6 +41,29 @@ public class Metrics implements Serializable {
     private LegMetrics rightLeg;
 
 
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public double getWeight() {
         return this.weight;

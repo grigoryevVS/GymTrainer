@@ -1,4 +1,4 @@
-package com.vgrigore.gym.trainer.model;
+package com.vgrigore.gym.trainer.model.user;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -23,10 +23,7 @@ public class UserAccount implements Serializable {
 
     private Date birthday;
 
-    private Metrics metrics;
-
     private UserCredentials credentials;
-
 
 
 
@@ -60,14 +57,6 @@ public class UserAccount implements Serializable {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
-    }
-
-    public Metrics getMetrics() {
-        return this.metrics;
-    }
-
-    public void setMetrics(Metrics metrics) {
-        this.metrics = metrics;
     }
 
     public UserCredentials getCredentials() {

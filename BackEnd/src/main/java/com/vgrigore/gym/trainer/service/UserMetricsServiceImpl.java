@@ -1,19 +1,20 @@
 package com.vgrigore.gym.trainer.service;
 
 import com.vgrigore.gym.trainer.dao.UserMetricsRepository;
-import com.vgrigore.gym.trainer.model.Metrics;
+import com.vgrigore.gym.trainer.model.metrics.Metrics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Implementation retrieves users metrics
  * also save them and edit if needed.
- *
  */
 @Service
-public class UserMetricsServiceImpl implements UserMetricsService{
+public class UserMetricsServiceImpl implements UserMetricsService {
 
     private UserMetricsRepository metricsRepository;
 
@@ -26,11 +27,19 @@ public class UserMetricsServiceImpl implements UserMetricsService{
 
 
     @Override
-    public Metrics getMetrics(long userId) {
-        Metrics metrics = metricsRepository.findMetricsByUserId(userId);
-        LOGGER.debug("Metrics: {0} founded for userId: {1}");
+    public Metrics getMetrics(long metricsId) {
+        Metrics metrics = metricsRepository.findMetricsById(metricsId);
+        LOGGER.debug("Metrics: {0} founded for metricsId: {1}", metrics, metricsId);
         return metrics;
     }
+
+    @Override
+    public List<Metrics> getAllUserMetrics(long userId) {
+        List<Metrics> userMetrics = metricsRepository.findAllMetricsByUserId(userId);
+        LOGGER.debug("For userId: {0} founded {1} metrics entries.", userId, userMetrics.size());
+        return userMetrics;
+    }
+
 
     @Override
     public boolean createMetrics(long userId, Metrics metrics) {

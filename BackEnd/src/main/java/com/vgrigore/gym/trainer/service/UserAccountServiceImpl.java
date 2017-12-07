@@ -1,9 +1,8 @@
 package com.vgrigore.gym.trainer.service;
 
-import com.vgrigore.gym.trainer.controller.MetricsController;
 import com.vgrigore.gym.trainer.dao.UserAccountRepository;
-import com.vgrigore.gym.trainer.model.UserAccount;
-import com.vgrigore.gym.trainer.model.UserCredentials;
+import com.vgrigore.gym.trainer.model.user.UserAccount;
+import com.vgrigore.gym.trainer.model.user.UserCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

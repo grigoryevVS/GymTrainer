@@ -1,6 +1,8 @@
 package com.vgrigore.gym.trainer.service;
 
-import com.vgrigore.gym.trainer.model.Metrics;
+import com.vgrigore.gym.trainer.model.metrics.Metrics;
+
+import java.util.List;
 
 /**
  * Interface defines operations with
@@ -10,12 +12,17 @@ public interface UserMetricsService {
 
 
     /**
-     * Get metrics by userId
+     * Get metrics by metricsId
      *
-     * @param userId - passed userId
-     * @return - metrics for the given userId
+     * @param metricsId - passed metricsId
+     * @return - metrics for the given metricsId
      */
-    Metrics getMetrics(long userId);
+    Metrics getMetrics(long metricsId);
+
+    /**
+     * Get all user metrics based on passed userId
+     */
+    List<Metrics> getAllUserMetrics(long userId);
 
     /**
      * Create new metrics entry for the given user

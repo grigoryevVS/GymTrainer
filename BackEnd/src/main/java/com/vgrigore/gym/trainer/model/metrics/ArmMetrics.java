@@ -1,4 +1,4 @@
-package com.vgrigore.gym.trainer.model;
+package com.vgrigore.gym.trainer.model.metrics;
 
 import java.io.Serializable;
 

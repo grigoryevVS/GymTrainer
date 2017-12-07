@@ -1,7 +1,6 @@
 package com.vgrigore.gym.trainer.controller;
 
-import com.vgrigore.gym.trainer.model.Metrics;
-import com.vgrigore.gym.trainer.service.UserAccountServiceImpl;
+import com.vgrigore.gym.trainer.model.metrics.Metrics;
 import com.vgrigore.gym.trainer.service.UserMetricsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -31,21 +32,35 @@ public class MetricsController {
     private static final Logger LOGGER = LoggerFactory.getLogger(MetricsController.class);
 
     @Autowired
-    public MetricsController(UserMetricsServiceImpl metricsService, UserAccountServiceImpl accountService) {
+    public MetricsController(UserMetricsServiceImpl metricsService) {
         this.metricsService = metricsService;
     }
 
     /**
-     * Get user metrics
+     * Get user metrics by specified metricsId
      *
-     * @param userId - userId
+     * @param metricsId - metricsId
      * @return - user metrics
      */
-    @RequestMapping(method = GET)
-    public Metrics getUserMetrics(@PathVariable long userId) {
-        Metrics metrics = metricsService.getMetrics(userId);
-        LOGGER.debug("Metrics for the user: {0} is: {1}", userId, metrics);
+    @RequestMapping(method = GET, value = "/{metricsId}")
+    public Metrics getUserMetrics(@PathVariable long metricsId) {
+        Metrics metrics = metricsService.getMetrics(metricsId);
+        LOGGER.debug("Metrics for the metricsId: {0} is: {1}", metricsId, metrics);
         return metrics;
+    }
+
+
+    /**
+     * Get all user metrics by specified userId
+     *
+     * @param userId - userId
+     * @return - list of metrics relevant to the userId
+     */
+    @RequestMapping(method = GET)
+    public List<Metrics> getAllUserMetrics(@PathVariable long userId) {
+        List<Metrics> userMetrics = metricsService.getAllUserMetrics(userId);
+        LOGGER.debug("User with id: {0} has {1} metrics entries", userId, userMetrics.size());
+        return userMetrics;
     }
 
     /**

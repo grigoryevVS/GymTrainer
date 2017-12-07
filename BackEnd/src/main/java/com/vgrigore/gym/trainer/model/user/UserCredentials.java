@@ -1,4 +1,4 @@
-package com.vgrigore.gym.trainer.model;
+package com.vgrigore.gym.trainer.model.user;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import sun.security.util.Password;

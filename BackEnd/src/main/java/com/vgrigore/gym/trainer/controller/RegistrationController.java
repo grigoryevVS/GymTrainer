@@ -1,6 +1,6 @@
 package com.vgrigore.gym.trainer.controller;
 
-import com.vgrigore.gym.trainer.model.UserAccount;
+import com.vgrigore.gym.trainer.model.user.UserAccount;
 import com.vgrigore.gym.trainer.service.UserAccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

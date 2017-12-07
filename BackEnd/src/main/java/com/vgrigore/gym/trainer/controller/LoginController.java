@@ -1,19 +1,15 @@
 package com.vgrigore.gym.trainer.controller;
 
-import com.vgrigore.gym.trainer.model.ErrorResponse;
-import com.vgrigore.gym.trainer.model.UserAccount;
-import com.vgrigore.gym.trainer.model.UserCredentials;
+import com.vgrigore.gym.trainer.model.user.UserAccount;
+import com.vgrigore.gym.trainer.model.user.UserCredentials;
 import com.vgrigore.gym.trainer.service.UserAccountService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -55,7 +51,7 @@ public class LoginController {
         Optional<UserAccount> userAccount = accountService.findUserByCredentials(credentials);
 
         return userAccount.<ResponseEntity>map(user -> new ResponseEntity<>(user, OK))
-                .orElseGet(() -> new ResponseEntity<>(new ErrorResponse("Not found"), NOT_FOUND));
+                .orElseGet(() -> new ResponseEntity<>(NOT_FOUND));
     }
 
     private boolean isValidCredentials(UserCredentials credentials) {
